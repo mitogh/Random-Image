@@ -8,12 +8,12 @@
  * Author URI: http://www.crisoforo.com
  * License: MIT
  */
+include_once(plugin_dir_path(__FILE__).'/class-simple-random-image.php');
 
 add_action('admin_menu', 'simple_random_image');
 
 function simple_random_image() {
-    add_menu_page(__('Simple Random Image','Simple Random Image'), __('Simple Random Image','statics'), 'manage_options', 'sexy-options', 'simple_random_image_options' );
-    add_submenu_page("sexy-options", "Configuration", "Configuration", 0, "sexy-configuration", "configuration");
+    add_menu_page(__('Simple Random Image','Simple Random Image'), __('Simple Random Image','simple_random_image'), 'manage_options', 'simple-random-image', 'simple_random_image_options' );
 }
 
 function simple_random_image_options(){
@@ -26,5 +26,3 @@ function simple_random_image_options(){
     </div>
 <?php
 }// Options
-function simple_random_image_configuration(){
-}
