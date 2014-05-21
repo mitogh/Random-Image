@@ -6,7 +6,6 @@ class Simple_Random_Image{
 
     public function __construct(){
         $this->initialize();
-        $this->generate();
     }
 
     private function initialize(){
@@ -15,9 +14,27 @@ class Simple_Random_Image{
 
         $this->image["url"] = "";
         $this->image["alt"] = "";
-        $this->image["title"] = "";
         $this->image["height"] = 0;
         $this->image["width"] = 0;
+    }
+
+    public function fill($size = "medium"){
+        if( $this->dataObject != null ){
+            if( $size && $size != "thumbnail" && 
+                $size != "large" && $size != "full"){
+                $size = "medium";
+            }
+
+            $data = $this->dataObject;
+            $image = wp_get_attachment_image_src( $data->ID, $size );
+
+            $this->image["alt"] = $data->post_title;
+            if( count( $image ) ){
+                $this->image["url"]     = $image[0];
+                $this->image["width"]   = $image[1];
+                $this->image["height"]  = $image[2];
+            }
+        }
     }
 
     public function generate(){
@@ -34,14 +51,10 @@ class Simple_Random_Image{
         if( $attachments ){
             $this->dataObject = $attachments[0];
         }
-        echo "<pre>";
-        var_dump($this->dataObject);
-        echo "</pre>";
     }
 
-    public function get( $size = "medium", $value = "all" ){
-        if( $value === "all" ){
-            return $this->image;
-        }
+    public function get( $size = "medium"){
+        $this->fill( $size );
+        return $this->image;
     }
 }
