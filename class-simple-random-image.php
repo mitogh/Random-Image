@@ -6,6 +6,7 @@ class Simple_Random_Image{
 
     public function __construct(){
         $this->initialize();
+        $this->generate();
     }
 
     private function initialize(){
