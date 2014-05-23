@@ -1,7 +1,20 @@
 <?php
+/**
+ * Class for extract a random image from the 
+ * library of attachments, allows the different 
+ * sizes of images
+ */
 class Simple_Random_Image{
 
+    /**
+     * The object to retrive the data from the librry
+     */
     private $dataObject;
+    /**
+     * Array with the data of the image independient 
+     * of the size of the different sizes, the array
+     * is as follows.
+     */
     private $image;
 
     public function __construct(){
@@ -9,6 +22,9 @@ class Simple_Random_Image{
         $this->generate();
     }
 
+    /**
+     * initialize the values for the member variables
+     */
     private function initialize(){
         $this->dataObject = null;
         $this->image = array();
@@ -19,6 +35,10 @@ class Simple_Random_Image{
         $this->image["width"] = 0;
     }
 
+    /**
+     *  Fill the $image with the data from the object of 
+     *  attachments
+     */
     public function fill($size = "medium"){
         if( $this->dataObject != null ){
             if( $size && $size != "thumbnail" && 
@@ -38,6 +58,9 @@ class Simple_Random_Image{
         }
     }
 
+    /**
+     * Generate a new random object from the library
+     */
     public function generate(){
         $args = array(
             'numberposts'       => 1,
@@ -54,6 +77,11 @@ class Simple_Random_Image{
         }
     }
 
+    /**
+     * Fill the image with the data of a random image object
+     * œparam   string  $size   The size of the image: thumbnail, medium, large or full
+     * @return  array           The array with the data of the image.
+     */
     public function get( $size = "medium"){
         $this->fill( $size );
         return $this->image;
