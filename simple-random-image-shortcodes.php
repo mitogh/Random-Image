@@ -22,7 +22,7 @@ function random_images_shortcode( $atts ) {
       $data['total'] = 1;
     }
     // Check for right values
-    $data['size'] = $randomImage->rightSize($data['size']);
+    $data['size'] = $randomImage->right_size($data['size']);
     // HTML OUTPUT;
     $output = "\n";
 

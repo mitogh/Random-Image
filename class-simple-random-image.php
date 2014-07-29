@@ -42,7 +42,10 @@ class Simple_Random_Image{
         }
     }
 
-    public function rightSize($size){
+    /**
+     * Ensures the use of the right sizes for the images
+     */
+    public function right_size($size){
         if( $size && $size != "thumbnail" && $size != "large" && $size != "full"){
             return "medium";
         }else{
@@ -50,14 +53,13 @@ class Simple_Random_Image{
         }
     }
 
-
     /**
      *  Fill the $image with the data from the object of 
      *  attachments: url, width, height and alt text.
      */
     public function fill( $size = "medium" ){
         if( $this->dataObject != null ){
-            $size = $this->rightSize($size);
+            $size = $this->right_size($size);
 
             $data = $this->dataObject;
             // Retrive the info from this attachment
