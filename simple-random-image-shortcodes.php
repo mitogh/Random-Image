@@ -6,7 +6,10 @@
  * 1 image, size: medium, alt as false. 
  *
  * Example of usage:
- * [random-images number=10 size="large", alt=true]
+ * [random-images total=10 size="large", alt=true]
+ *
+ * @param   $atts   Array   The asociative array with the key value pairs
+ * @return          String  The HTML with the images
  */
 function random_images_shortcode( $atts ) {
     $data = shortcode_atts( array(
@@ -26,7 +29,7 @@ function random_images_shortcode( $atts ) {
     // HTML OUTPUT;
     $output = "\n";
 
-    for($i = 0; $i < $data['total']; $i++){
+    for($i = 1; $i <= $data['total']; $i++){
       $image = $randomImage->get($data['size']);
       // Open image tag
       $output .= "<img src='" . $image['url'] . "'";
@@ -38,4 +41,26 @@ function random_images_shortcode( $atts ) {
     }
     return $output;
 }
+
+/**
+ * Generates just one image, uses the same method above but
+ * just with one image as a total for the images to display.
+ *
+ * Example of usage:
+ * [random-image alt=true size="large"]
+ *
+ * @param   $atts   Array   The asociative array with the value key value pairs
+ * @return          String  HTML with the image generated          
+ */
+function random_image_shortcode( $atts ) {
+    $data = shortcode_atts( array(
+        'total'   => 1,
+        'size'    => 'medium',
+        'alt'     => false
+    ), $atts );
+
+    return random_images_shortcode( $data );
+}
+
 add_shortcode( 'random-images', 'random_images_shortcode' );
+add_shortcode( 'random-image', 'random_image_shortcode' );

@@ -56,7 +56,7 @@ class Simple_Random_Image{
     }
 
     /**
-     *  Fill the $image with the data from the object of 
+     *  Fill the $image aarray with the data from the object of 
      *  attachments: url, width, height and alt text.
      */
     public function fill( $size = "medium" ){
@@ -77,7 +77,9 @@ class Simple_Random_Image{
     }
 
     /**
-     * Fill the image with the data of a random image object
+     * Generate a new image, calling to the generate() method, after that, fill the 
+     * $Image array with the new data of the new object generated.
+     *
      * @param   string  $size   The size of the image: thumbnail, medium, large or full
      * @return  array           The array with the data of the image.
      */
