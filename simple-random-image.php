@@ -6,7 +6,7 @@
  * Version: 0.1
  * Author: Crisoforo.
  * Author URI: http://www.crisoforo.com
- * License: MIT
+ * License: Apache 2.0
  */
 include_once(plugin_dir_path(__FILE__).'/class-simple-random-image.php');
 include_once(plugin_dir_path(__FILE__).'/simple-random-image-shortcodes.php');
