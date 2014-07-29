@@ -9,6 +9,7 @@
  * License: MIT
  */
 include_once(plugin_dir_path(__FILE__).'/class-simple-random-image.php');
+include_once(plugin_dir_path(__FILE__).'/simple-random-image-shortcodes.php');
 
 add_action('admin_menu', 'simple_random_image');
 
