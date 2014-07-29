@@ -44,6 +44,8 @@ class Simple_Random_Image{
 
     /**
      * Ensures the use of the right sizes for the images
+     * @param   string  $size   The string with the size of the image
+     * @return  string          'medium' if is not correct, $size otherwise
      */
     public function right_size($size){
         if( $size && $size != "thumbnail" && $size != "large" && $size != "full"){
@@ -76,7 +78,7 @@ class Simple_Random_Image{
 
     /**
      * Fill the image with the data of a random image object
-     * œparam   string  $size   The size of the image: thumbnail, medium, large or full
+     * @param   string  $size   The size of the image: thumbnail, medium, large or full
      * @return  array           The array with the data of the image.
      */
     public function get( $size = "medium" ){
