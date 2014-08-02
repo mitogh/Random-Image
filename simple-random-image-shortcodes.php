@@ -24,28 +24,33 @@ function random_images_shortcode( $atts ) {
 
     // Limit number of images
     if($data['total'] <= 0 || $data['total'] > 1000){
-      $data['total'] = 1;
+        $data['total'] = 1;
     }
     // Check for right values
-    $data['size'] = $randomImage->right_size($data['size']);
+    $randomImage->right_size( $data['size'] );
     // HTML OUTPUT;
     $output = "\n";
 
     for($i = 1; $i <= $data['total']; $i++){
-      $image = $randomImage->get($data['size']);
-      // Open image tag
-      $output .= "<img src='" . $image['url'] . "'";
-      if($data['alt']){
-        $output .= " alt='" . $image['alt'] . "'";
-      }
-      if($data['class']){
-        $output .= " class='" . $data['class'] . "'";
-      }
-      if($data['id']){
-        $output .= " id='" . $data['id'] . "'";
-      }
-      // Close the image tag
-      $output .= ">\n";
+        $image = $randomImage->get($data['size']);
+
+        if( $image == null ){
+            break;
+        }
+
+        // Open image tag
+        $output .= "<img src='" . $image['url'] . "'";
+        if( $data['alt'] ){
+            $output .= " alt='" . $image['alt'] . "'";
+        }
+        if( $data['class'] ){
+            $output .= " class='" . $data['class'] . "'";
+        }
+        if( $data['id'] ){
+            $output .= " id='" . $data['id'] . "'";
+        }
+        // Close the image tag
+        $output .= ">\n";
     }
     return $output;
 }

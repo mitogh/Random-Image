@@ -47,9 +47,9 @@ class Simple_Random_Image{
      * @param   string  $size   The string with the size of the image
      * @return  string          'medium' if is not correct, $size otherwise
      */
-    public function right_size($size){
+    public function right_size( &$size ){
         if( $size && $size != "thumbnail" && $size != "large" && $size != "full"){
-            return "medium";
+            $size = "medium";
         }else{
             return $size;
         }
@@ -61,7 +61,7 @@ class Simple_Random_Image{
      */
     public function fill( $size = "medium" ){
         if( $this->dataObject != null ){
-            $size = $this->right_size($size);
+            $this->right_size($size);
 
             $data = $this->dataObject;
             // Retrive the info from this attachment
@@ -71,7 +71,7 @@ class Simple_Random_Image{
                 $this->image["url"]     = $image[0];
                 $this->image["width"]   = $image[1];
                 $this->image["height"]  = $image[2];
-                $this->image["alt"] = $data->post_title;
+                $this->image["alt"]     = $data->post_title;
             }
         }
     }
