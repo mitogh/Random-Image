@@ -1,8 +1,7 @@
 <?php
 /**
- * Class for extract a random image from the 
- * library of attachments, allows the different 
- * sizes of images
+ * Class for extract a random image from the library of attachments,
+ * allows the different sizes of images
  */
 class Simple_Random_Image{
 
@@ -12,8 +11,8 @@ class Simple_Random_Image{
     private $dataObject = null;
 
     /**
-     * Array with the data of the image independient 
-     * of the size of the different sizes, the array
+     * Array with the data of the image independient
+     * of the size of the different images, the array
      * is as follows.
      */
     private $image = array(
@@ -43,25 +42,26 @@ class Simple_Random_Image{
     }
 
     /**
-     * Ensures the use of the right sizes for the images
+     * Ensures the use of the right sizes for the images, updating the
+     * reference to $size with "medium" if it's different of the default values
+     *
      * @param   string  $size   The string with the size of the image
-     * @return  string          'medium' if is not correct, $size otherwise
      */
     public function right_size( &$size ){
         if( $size && $size != "thumbnail" && $size != "large" && $size != "full"){
             $size = "medium";
-        }else{
-            return $size;
         }
     }
 
     /**
-     *  Fill the $image aarray with the data from the object of 
+     *  Fill the $image aarray with the data from the object of
      *  attachments: url, width, height and alt text.
+     *
+     *  @param  string  $size   The size of the image: thumbnail, medium, large or full
      */
     public function fill( $size = "medium" ){
         if( $this->dataObject != null ){
-            $this->right_size($size);
+            $this->right_size( $size );
 
             $data = $this->dataObject;
             // Retrive the info from this attachment
@@ -77,15 +77,38 @@ class Simple_Random_Image{
     }
 
     /**
-     * Generate a new image, calling to the generate() method, after that, fill the 
-     * $Image array with the new data of the new object generated.
+     * Updates the $image object with a new random image from the library
+     *
+     * @param   string  $size   The size of the image: thumbnail, medium, large or full
+     */
+    private function create( $size = "medium" ){
+        $this->generate();
+        $this->fill( $size );
+    }
+
+    /**
+     * Generate a new image, calling to the create() method
      *
      * @param   string  $size   The size of the image: thumbnail, medium, large or full
      * @return  array           The array with the data of the image.
      */
     public function get( $size = "medium" ){
-        $this->generate();
-        $this->fill( $size );
+        $this->create( $size );
         return $this->image;
+    }
+
+    /**
+     * Generates a new random imagem calling to the create() method
+     *
+     * @param   string  $size   The size of the image: thumbnail, medium, large or full
+     * @return  string          The url of the image
+     */
+    public function get_url( $size = "medium" ){
+        $this->create( $size );
+        if( $image != null ) {
+            return $image['url'];
+        } else {
+            return "";
+        }
     }
 }
