@@ -19,7 +19,9 @@ if( !function_exists('random_images_shortcode') ){
             'size'    => 'medium',
             'alt'     => false,
             'class'   => '',
-            'id'      => ''
+            'id'      => '',
+            'after'   => '',
+            'before'  => ''
         ), $atts );
         $randomImage = new Simple_Random_Image();
 
@@ -39,6 +41,10 @@ if( !function_exists('random_images_shortcode') ){
                 break;
             }
 
+            if( $data['before'] && strlen( $data['before'] ) ){
+              $output .= $data['before'] . "\n";
+            }
+
             // Open image tag
             $output .= "<img src='" . $image['url'] . "'";
             if( $data['alt'] ){
@@ -52,6 +58,10 @@ if( !function_exists('random_images_shortcode') ){
             }
             // Close the image tag
             $output .= ">\n";
+
+            if( $data['after'] && strlen( $data['after'] ) ){
+              $output .= $data['after'] . "\n" ;
+            }
         }
         return $output;
     }
@@ -74,7 +84,9 @@ if( !function_exists('random_image_shortcode') ){
             'size'    => 'medium',
             'alt'     => false,
             'class'   => '',
-            'id'      => ''
+            'id'      => '',
+            'after'   => '',
+            'before'  => ''
         ), $atts );
 
         return random_images_shortcode( $data );
