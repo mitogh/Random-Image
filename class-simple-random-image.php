@@ -1,4 +1,4 @@
-<?php
+<?php namespace mitogh\github\com;
 /**
  * Class for extract a random image from the library of attachments,
  * allows the different sizes of images

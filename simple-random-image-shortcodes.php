@@ -1,17 +1,5 @@
-<?php
-/**
- * Generates a list of random images from 1 to N such as N < 1000
- * allowing to set the total of images to display, also the size 
- * and the alt for each image is optional, the default values are:
- * 1 image, size: medium, alt as false. 
- *
- * Example of usage:
- * [random-images total=10 size="large", alt=true class="picture"]
- * [random-images total=10 size="large", alt=true id="random"]
- *
- * @param   $atts   Array   The asociative array with the key value pairs
- * @return          String  The HTML with the images
- */
+<?php namespace mitogh\github\com;
+
 if( !function_exists('random_images_shortcode') ){
     function random_images_shortcode( $atts ) {
         $data = shortcode_atts( array(
@@ -93,5 +81,5 @@ if( !function_exists('random_image_shortcode') ){
     }
 }
 
-add_shortcode( 'random-images', 'random_images_shortcode' );
-add_shortcode( 'random-image', 'random_image_shortcode' );
+add_shortcode( 'random-images', __NAMESPACE__ . '\random_images_shortcode' );
+add_shortcode( 'random-image', __NAMESPACE__ . '\random_image_shortcode' );

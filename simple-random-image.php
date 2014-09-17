@@ -1,4 +1,4 @@
-<?php
+<?php namespace mitogh\github\com;
 /**
  * Plugin Name: Simple Random Image
  * Plugin URI: https://github.com/mitogh/Simple-Random-Image
