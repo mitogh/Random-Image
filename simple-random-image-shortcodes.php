@@ -13,13 +13,10 @@ if( !function_exists('random_images_shortcode') ){
         ), $atts );
         $randomImage = new Simple_Random_Image();
 
-        // Limit number of images
         if($data['total'] <= 0 || $data['total'] > 1000){
             $data['total'] = 1;
         }
-        // Check for right values
         $randomImage->right_size( $data['size'] );
-        // HTML OUTPUT;
         $output = "\n";
 
         for($i = 1; $i <= $data['total']; $i++){
@@ -33,7 +30,6 @@ if( !function_exists('random_images_shortcode') ){
               $output .= $data['before'] . "\n";
             }
 
-            // Open image tag
             $output .= "<img src='" . $image['url'] . "'";
             if( $data['alt'] ){
                 $output .= " alt='" . $image['alt'] . "'";
@@ -44,7 +40,6 @@ if( !function_exists('random_images_shortcode') ){
             if( $data['id'] ){
                 $output .= " id='" . $data['id'] . "'";
             }
-            // Close the image tag
             $output .= ">\n";
 
             if( $data['after'] && strlen( $data['after'] ) ){
@@ -55,16 +50,6 @@ if( !function_exists('random_images_shortcode') ){
     }
 }
 
-/**
- * Generates just one image, uses the same method above but
- * just with one image as a total for the images to display.
- *
- * Example of usage:
- * [random-image alt=true size="large" class="picture"]
- *
- * @param   $atts   Array   The asociative array with the value key value pairs
- * @return          String  HTML with the image generated          
- */
 if( !function_exists('random_image_shortcode') ){
     function random_image_shortcode( $atts ) {
         $data = shortcode_atts( array(
