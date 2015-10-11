@@ -1,14 +1,18 @@
 <?php namespace mitogh\github\com;
 
+if ( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
+
 class Simple_Random_Image{
 
     private $dataObject = null;
 
     private $image = array(
-      "url"     => "",
-      "alt"     => "",
-      "height"  => 0,
-      "width"   => 0
+      'url'     => '',
+      'alt'     => '',
+      'height'  => 0,
+      'width'   => 0
     );
 
     public function generate(){
@@ -28,12 +32,12 @@ class Simple_Random_Image{
     }
 
     public function right_size( &$size ){
-        if( $size && $size != "thumbnail" && $size != "large" && $size != "full"){
-            $size = "medium";
+        if( $size && $size != 'thumbnail' && $size != 'large' && $size != 'full'){
+            $size = 'medium';
         }
     }
 
-    public function fill( $size = "medium" ){
+    public function fill( $size = 'medium' ){
         if( $this->dataObject != null ){
             $this->right_size( $size );
 
@@ -42,30 +46,30 @@ class Simple_Random_Image{
             $image = wp_get_attachment_image_src( $data->ID, $size );
 
             if( count( $image ) ){
-                $this->image["url"]     = $image[0];
-                $this->image["width"]   = $image[1];
-                $this->image["height"]  = $image[2];
-                $this->image["alt"]     = $data->post_title;
+                $this->image['url']     = $image[0];
+                $this->image['width']   = $image[1];
+                $this->image['height']  = $image[2];
+                $this->image['alt']     = $data->post_title;
             }
         }
     }
 
-    private function create( $size = "medium" ){
+    private function create( $size = 'medium' ){
         $this->generate();
         $this->fill( $size );
     }
 
-    public function get( $size = "medium" ){
+    public function get( $size = 'medium' ){
         $this->create( $size );
         return $this->image;
     }
 
-    public function get_url( $size = "medium" ){
+    public function get_url( $size = 'medium' ){
         $this->create( $size );
         if( $image != null ) {
             return $image['url'];
         } else {
-            return "";
+            return '';
         }
     }
 }
