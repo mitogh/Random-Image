@@ -8,5 +8,8 @@
  * Author URI: http://www.crisoforo.com
  * License: Apache 2.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 include_once(plugin_dir_path(__FILE__).'/class-simple-random-image.php');
 include_once(plugin_dir_path(__FILE__).'/simple-random-image-shortcodes.php');

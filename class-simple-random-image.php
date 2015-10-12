@@ -1,8 +1,6 @@
 <?php namespace mitogh\github\com;
 
-if ( ! defined( 'ABSPATH' ) ) {
-  exit;
-}
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Simple_Random_Image{
 

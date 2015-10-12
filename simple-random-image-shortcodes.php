@@ -1,5 +1,7 @@
 <?php namespace mitogh\github\com;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if( !function_exists('random_images_shortcode') ){
 	function random_images_shortcode( $atts ) {
 		$data = shortcode_atts( array(
