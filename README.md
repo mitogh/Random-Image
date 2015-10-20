@@ -1,4 +1,4 @@
-Simple-Random-Image
+Simple Random Image
 ===================
 
-[WIP] - Plugin for generate a simple random image from the attachments file.
+Generates a random image from the attachments file.
