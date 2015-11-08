@@ -30,3 +30,8 @@ function random_images_ids( $total = 1 ){
 	));
 	return $query->run();
 }
+
+/* $url = random_image_src(); */
+/* printf( '<a href="%s" target="_blank">%s</a>', $url, $url); */
+/* printf( '<img src="%s" />', $url ); */
+/* die(); */
