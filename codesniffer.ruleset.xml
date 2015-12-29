@@ -10,7 +10,6 @@
     <exclude name="Generic.Files.LowercasedFilename" />
     <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
     <exclude name="Squiz.Commenting.FileComment" />
-    <exclude name="Squiz.Commenting.FunctionComment" />
     <exclude name="WordPress.Files.FileName" />
   </rule>
 </ruleset>
