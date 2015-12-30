@@ -1,4 +1,5 @@
-Simple Random Image
+Random Image
 ===================
 
-Generates a random image from the attachments file.
+> Easily random image generation from the library of attachments or from
+ a post, page or custom post type ID.
