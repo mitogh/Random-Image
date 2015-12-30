@@ -1,0 +1,43 @@
+{
+  "name": "mitogh/random-image",
+  "description": "Retrive random images from the library of attachments.",
+  "keywords": ["wordpress", "images", "attachments", "random"],
+  "homepage": "https://github.com/mitogh/Random-Image",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Crisoforo Gaspar Hernandez",
+      "email": "github@crisoforo.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "mitogh\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "mitogh\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "2.*",
+    "wp-coding-standards/wpcs": "dev-master",
+    "phpdocumentor/phpdocumentor": "2.*"
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "./vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs/",
+      "./vendor/bin/phpcs --config-set default_standard ./codesniffer.ruleset.xml",
+      "./vendor/bin/phpcs --config-set show_progress 0",
+      "./vendor/bin/phpcs --config-set colors 1"
+    ],
+    "phpcs": [
+      "phpcs src/*.php"
+    ]
+  }
+}
