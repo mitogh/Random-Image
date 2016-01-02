@@ -16,6 +16,28 @@ size.
 - WordPress
 - PHP 5.3 >=
 
+## Installation  
+
+You can add this library into your theme or plugin by using composer,
+and adding this library as a dependency, just by running: 
+
+```php
+composer require mitogh/random-image
+```
+
+After that make sure you include the library using the autoload file
+from composer: 
+
+```php
+include './vendor/autoload.php';
+```
+
+Or by using directly the file.  
+
+```php
+include 'vendor/mitogh/random-image/src/RandomImage.php';
+```
+
 ## Usage
 
 In order to access to the public functions you need to create an
